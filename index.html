@@ -1,11 +1,66 @@
 <!DOCTYPE html>
-<html lang="en">
+<html>
 <head>
-    <title>Exercise 3</title>
+
+<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous">
+	
+</script>
+
+<title>It's not a moon</title>
+
+<script type="text/javascript">
+	var xmlhttp = new XMLHttpRequest();
+	
+	xmlhttp.onreadystatechange = function() {
+		if (this.readyState == 4 && this.status == 200) {
+			var myObj = JSON.parse(this.responseText);
+			var planets = myObj.results;
+			var planets_table = ""
+
+		for (planet of planets) {
+            console.log(planet.name);
+            planets_table += "<tr><td>" + planet.name + "</td>" +
+             "<td>" + planet.rotation_period + "<td>" + planet.diameter +
+             "<td>" + planet.orbital_period + "<td>" + planet.climate + 
+             "<td>" + planet.gravity + "<td>" + planet.terrain +
+             "<td>" + planet.surface_water + 
+             "<td>" + planet.population +
+
+             "</td></tr>";
+
+
+      
+
+   
+          }
+
+        document.getElementById("test").innerHTML =
+        "<tr>,<th>name</th><th>rotation period</th><th>diameter</th><th>orbital period</th><th>climate</th><th>gravity</th><th>terrain</th><th>surface water</th><th>population</th></tr>" +
+        planets_table;
+
+
+		}
+
+		};
+
+		xmlhttp.open("GET", "https://swapi.co/api/planets/", true);
+		xmlhttp.send();
+
+</script>
 </head>
 <body>
-    <center>
-        <h1>Daftar Planet</h1>
-    </center>
+	<div class="jumbotron text-center">
+		<h1> First Try </h1>
+	</div>
+
+	<div class="container">
+		<h1> Planets </h1>
+		<table id="test" class="rounded mb-5" border="= 1">
+		</table>
+
+	</div>
+
+
 </body>
 </html>
